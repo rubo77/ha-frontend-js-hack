@@ -41,7 +41,13 @@ palette: [palette.svg](palette.svg) (light) / [palette-dark.svg](palette-dark.sv
 1. Copy **both** files into your HA config `www/` directory:
    `category-tint.js` and `category-tint-map.js` (the engine imports the
    map module, so both must sit side by side).
-2. Register the module and theme:
+2. Register the module and theme. Add this to `configuration.yaml`
+   (inside your HA config dir — the same level as `automations.yaml`).
+   If a `frontend:` key already exists, merge the two parts into it —
+   YAML does not allow the key twice. `/local/` is the URL alias that
+   serves files from `<config>/www/`, so `/local/category-tint.js`
+   resolves to `<config>/www/category-tint.js`. The `?v=` query is a
+   free-form cache-buster, not a version check.
 
    ```yaml
    frontend:
