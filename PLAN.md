@@ -56,6 +56,10 @@ sun-Indigo `#3f51b5` — akzeptiert, weil Tint-Kanal ≠ Icon-Kanal und
 stehen beide frei von nativen State-Farben.
 
 **Auflösungsdetails:**
+- Entities mit `entity_picture` (Avatare, Brand-/Firmware-Icons wie
+  `update.*`, Kameras) werden nie getönt — das Bild füllt den Badge
+  selbst, ein Ring/Füllung wirkt dort nur störend.
+- `unavailable`/`unknown` bekommen ebenfalls keinen Tint.
 - `thermo_matter` vs `thermo_tado`: Plattform aus der Entity-Registry
   (`hass.entities[entity_id].platform` im Frontend) — nicht über Namensmuster.
 - dc-Kategorien (1–2, 5–8) schlagen domain-Kategorien (3–4, 9–10).

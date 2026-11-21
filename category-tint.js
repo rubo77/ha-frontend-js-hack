@@ -72,6 +72,9 @@ import {
     const stateObj = h?.states?.[entityId];
     if (!stateObj) return null;
     if (NO_TINT_STATES.has(stateObj.state)) return null;
+    // Entities rendered as a picture (avatars, brand icons) fill the badge
+    // themselves — a tint/ring behind an image only looks wrong.
+    if (stateObj.attributes?.entity_picture) return null;
 
     const domain = entityId.split('.')[0];
     const dc = stateObj.attributes?.device_class;
