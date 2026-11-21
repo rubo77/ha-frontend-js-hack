@@ -112,7 +112,8 @@
   const BADGE_TAGS = 'state-badge';
   const TILE_TAGS = 'ha-tile-icon';
   const NO_TINT_STATES = new Set(['unavailable', 'unknown']);
-  const MAX_DEPTH = 8;
+  // Sections views nest badges up to ~9 shadow roots deep; keep headroom.
+  const MAX_DEPTH = 14;
   const observedRoots = new WeakSet();
   let lastTheme = null;
 
