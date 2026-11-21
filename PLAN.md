@@ -73,6 +73,7 @@ frontend:
     category-tint:
       --ct-enabled: "1"
       --ct-opacity: "0.18"
+      --ct-ring-opacity: "0.85"
       --ct-temp: "#ef6c00"
       --ct-humid: "#039be5"
       --ct-thermo-matter: "#6a1b9a"

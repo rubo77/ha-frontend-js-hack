@@ -128,7 +128,9 @@
     }
     const opacity =
       parseFloat(style.getPropertyValue('--ct-opacity')) || 0.18;
-    return { colors, opacity };
+    const ring =
+      parseFloat(style.getPropertyValue('--ct-ring-opacity')) || 0.85;
+    return { colors, opacity, ring };
   }
 
   const hexToRgba = (hex, opacity) => {
@@ -188,7 +190,8 @@
       const hex = theme.colors[k];
       if (!hex || hex === 'transparent') return '';
       const rgba = hexToRgba(hex, theme.opacity);
-      return `:host([data-ct="${k}"]) .container{background-color:${rgba} !important}` +
+      const ring = hexToRgba(hex, theme.ring);
+      return `:host([data-ct="${k}"]) .container{background-color:${rgba} !important;box-shadow:inset 0 0 0 2px ${ring} !important}` +
         `:host([data-ct="${k}"]) .container.background::before{background-color:${rgba} !important;opacity:1 !important}`;
     });
     const css = rules.join('');
@@ -223,11 +226,16 @@
         const hex = cat && cat !== 'neutral' ? theme.colors[cat] : null;
         if (hex) {
           const bg = hexToRgba(hex, theme.opacity);
+          const ring = `inset 0 0 0 2px ${hexToRgba(hex, theme.ring)}`;
           if (el.style.backgroundColor !== bg) {
             el.style.setProperty('background-color', bg, 'important');
           }
-        } else if (el.style.backgroundColor) {
+          if (el.style.boxShadow !== ring) {
+            el.style.setProperty('box-shadow', ring, 'important');
+          }
+        } else {
           el.style.removeProperty('background-color');
+          el.style.removeProperty('box-shadow');
         }
       }
     }
@@ -250,6 +258,7 @@
     for (const el of collect(document, '[data-ct]')) delete el.dataset.ct;
     for (const el of collect(document, BADGE_TAGS)) {
       el.style.removeProperty('background-color');
+      el.style.removeProperty('box-shadow');
     }
   }
 
