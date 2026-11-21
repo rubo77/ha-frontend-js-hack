@@ -1,55 +1,63 @@
 # ha-frontend-js-hack
 
-`domain-icon-colors.js` — colors Home Assistant state icons by entity domain
-category, driven entirely by a theme's CSS custom properties.
+Frontend experiments for Home Assistant on `nebelhaufen`, loaded via
+`frontend.extra_module_url` — interim bridges until (parts of) them land in
+the `ha-frontend` fork properly.
 
-## Why this exists
+## category-tint.js (current approach)
 
-HA computes icon colors in JavaScript per entity state, so the usual
-`--state-icon-color` theme variable cannot recolor icons by domain. This
-module traverses the DOM (including nested shadow roots), detects each icon's
-entity domain, and injects a `<style>` forcing `color`/`fill` on the rendered
-SVG. Inactive states (`off`, `unavailable`, `unknown`, `none`) keep HA's
-native coloring, so on/off toggling stays visually distinct.
+Tints the **badge background circle** of state icons by entity category —
+temperature, humidity, energy, network, openings, time, place, controls and
+the two thermostat sources (Matter vs Tado). The icon color itself stays
+100% native, so HA's state semantics (amber = on, grey = off, deep-orange =
+heat, red = problem) keep their meaning. Two information channels:
 
-## Install
+```
+[○ tinted circle = category]  icon color = state
+```
 
-1. Copy `domain-icon-colors.js` into your HA config `www/` directory.
-2. Register it as a frontend module:
+Resolution order per entity: `device_class` group → `domain` → *neutral*
+(no tint). `climate`/`water_heater` resolve via the entity-registry platform
+(`matter` → `thermo_matter`, everything else → `thermo_tado`).
+Category list, colors and rationale: [PLAN.md](PLAN.md),
+palette: [palette.svg](palette.svg).
 
-   ```yaml
-   frontend:
-     extra_module_url:
-       - /local/domain-icon-colors.js?v=2
-   ```
+### Install
 
-3. Define a theme that carries the `--dic-*` palette:
+```yaml
+frontend:
+  extra_module_url:
+    - /local/category-tint.js?v=1
+  themes:
+    category-tint:
+      ct-enabled: "1"
+      ct-opacity: "0.18"
+      ct-temp: "#ef6c00"
+      ct-humid: "#039be5"
+      ct-thermo-matter: "#6a1b9a"
+      ct-thermo-tado: "#ab47bc"
+      ct-energy: "#fdd835"
+      ct-net: "#3949ab"
+      ct-opening: "#43a047"
+      ct-time: "#90a4ae"
+      ct-place: "#00897b"
+      ct-control: "#c2185b"
+```
 
-   ```yaml
-   frontend:
-     themes:
-       domain-icon-colors:
-         dic-enabled: "1"
-         dic-light: "#ffb300"    # light
-         dic-climate: "#ff7043"  # climate, water_heater
-         dic-switch: "#42a5f5"   # switch, button
-         dic-sensor: "#66bb6a"   # sensor, binary_sensor
-         dic-media: "#ab47bc"    # media_player, sun, person, zone, camera
-         dic-other: "#26a69a"    # everything else
-   ```
+Restart HA, select `category-tint` in your user profile → Theme. Switching
+back to default removes all tints (attributes/inline styles are cleaned up).
+Bump `?v=` on every file change.
 
-4. Restart HA, then select `domain-icon-colors` under your user profile →
-   Theme. Switching back to the default theme removes all injected styles.
-   Bump `?v=` whenever you change the JS file (browser cache).
+## domain-icon-colors.js (v1, archived)
 
-## Domain map
-
-Edit `DOMAIN_VARS` in `domain-icon-colors.js` to remap domains to the six
-`--dic-*` keys; edit the theme YAML to change colors. Unknown domains fall
-back to `dic-other`.
+First iteration: injected `<style>` elements force `color`/`fill` on the
+rendered SVG inside `ha-state-icon`/`state-badge` shadow roots, keyed by
+entity domain to `--dic-*` theme vars. Works, but overrides the state-color
+channel — superseded by the badge-tint approach. Kept for reference; theme
+YAML example in git history / `PLAN.md` background section.
 
 ## Deployed on
 
-- nebelhaufen (`/root/.homeassistant/www/domain-icon-colors.js`), theme
-  active for user `ruben`; repo copy lives in
-  `~/nebelhaufen/homeassistant/www/` — see `~/nebelhaufen/dev/CHANGES.md`.
+- nebelhaufen (`/root/.homeassistant/www/`), user `ruben`
+  — deploy copies via `~/nebelhaufen/homeassistant/www/`; ops log in
+  `~/nebelhaufen/dev/CHANGES.md`.
