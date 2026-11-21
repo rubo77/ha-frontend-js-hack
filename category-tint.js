@@ -72,11 +72,13 @@ import {
     const stateObj = h?.states?.[entityId];
     if (!stateObj) return null;
     if (NO_TINT_STATES.has(stateObj.state)) return null;
-    // Entities rendered as a picture (avatars, brand icons) fill the badge
-    // themselves — a tint/ring behind an image only looks wrong.
-    if (stateObj.attributes?.entity_picture) return null;
 
     const domain = entityId.split('.')[0];
+    // Pictures fill the badge themselves (brand logos, camera stills) —
+    // except person avatars, which are round and read well inside a ring.
+    if (stateObj.attributes?.entity_picture && domain !== 'person') {
+      return null;
+    }
     const dc = stateObj.attributes?.device_class;
     if (dc && DC_MAP[dc]) return DC_MAP[dc];
 

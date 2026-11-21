@@ -56,9 +56,11 @@ sun-Indigo `#3f51b5` — akzeptiert, weil Tint-Kanal ≠ Icon-Kanal und
 stehen beide frei von nativen State-Farben.
 
 **Auflösungsdetails:**
-- Entities mit `entity_picture` (Avatare, Brand-/Firmware-Icons wie
-  `update.*`, Kameras) werden nie getönt — das Bild füllt den Badge
-  selbst, ein Ring/Füllung wirkt dort nur störend.
+- Entities mit `entity_picture` (Brand-/Firmware-Icons wie `update.*`,
+  Kameras) werden nicht getönt — das Bild füllt den Badge selbst.
+  Ausnahme `person`: der runde Avatar liest sich im Ring gut, dort
+  bleibt der Tint aktiv (Füllung hinter dem Bild unsichtbar, nur der
+  Ring trägt die Kategorie).
 - `unavailable`/`unknown` bekommen ebenfalls keinen Tint.
 - `thermo_matter` vs `thermo_tado`: Plattform aus der Entity-Registry
   (`hass.entities[entity_id].platform` im Frontend) — nicht über Namensmuster.
