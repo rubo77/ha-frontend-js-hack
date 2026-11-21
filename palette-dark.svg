@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="1322" font-family="sans-serif">
+<rect width="780" height="1322" fill="#1e1e1e"/>
+<text x="40" y="48" font-size="26" font-weight="bold" fill="#e1e1e1">category-tint — badge background palette (dark)</text>
+<text x="40" y="72" font-size="14" fill="#9e9e9e">tint circle at --ct-opacity 0.25 (dark) (icon color stays native)</text>
+<circle cx="68" cy="114" r="26" fill="#ef6c00" fill-opacity="0.25" stroke="#ef6c00" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="114" r="8" fill="#44739e"/>
+<circle cx="120" cy="114" r="14" fill="#ef6c00" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="108" font-size="16" font-weight="bold" fill="#e1e1e1">temp</text>
+<text x="150" y="128" font-size="13" fill="#9e9e9e">#ef6c00 Orange — temperature</text>
+<circle cx="68" cy="178" r="26" fill="#039be5" fill-opacity="0.25" stroke="#039be5" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="178" r="8" fill="#44739e"/>
+<circle cx="120" cy="178" r="14" fill="#039be5" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="172" font-size="16" font-weight="bold" fill="#e1e1e1">humid</text>
+<text x="150" y="192" font-size="13" fill="#9e9e9e">#039be5 Light Blue — humidity, moisture, absolute_humidity</text>
+<circle cx="68" cy="242" r="26" fill="#6a1b9a" fill-opacity="0.25" stroke="#6a1b9a" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="242" r="8" fill="#44739e"/>
+<circle cx="120" cy="242" r="14" fill="#6a1b9a" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="236" font-size="16" font-weight="bold" fill="#e1e1e1">thermo_matter</text>
+<text x="150" y="256" font-size="13" fill="#9e9e9e">#6a1b9a Dark Purple — climate/water_heater via matter</text>
+<circle cx="68" cy="306" r="26" fill="#ab47bc" fill-opacity="0.25" stroke="#ab47bc" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="306" r="8" fill="#44739e"/>
+<circle cx="120" cy="306" r="14" fill="#ab47bc" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="300" font-size="16" font-weight="bold" fill="#e1e1e1">thermo_tado</text>
+<text x="150" y="320" font-size="13" fill="#9e9e9e">#ab47bc Violet — climate/water_heater via tado</text>
+<circle cx="68" cy="370" r="26" fill="#fdd835" fill-opacity="0.25" stroke="#fdd835" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="370" r="8" fill="#44739e"/>
+<circle cx="120" cy="370" r="14" fill="#fdd835" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="364" font-size="16" font-weight="bold" fill="#e1e1e1">energy</text>
+<text x="150" y="384" font-size="13" fill="#9e9e9e">#fdd835 Yellow — power, energy, battery, plug, ...</text>
+<circle cx="68" cy="434" r="26" fill="#3949ab" fill-opacity="0.25" stroke="#3949ab" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="434" r="8" fill="#44739e"/>
+<circle cx="120" cy="434" r="14" fill="#3949ab" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="428" font-size="16" font-weight="bold" fill="#e1e1e1">net</text>
+<text x="150" y="448" font-size="13" fill="#9e9e9e">#3949ab Indigo — connectivity, data_rate, signal_strength</text>
+<circle cx="68" cy="498" r="26" fill="#43a047" fill-opacity="0.25" stroke="#43a047" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="498" r="8" fill="#44739e"/>
+<circle cx="120" cy="498" r="14" fill="#43a047" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="492" font-size="16" font-weight="bold" fill="#e1e1e1">opening</text>
+<text x="150" y="512" font-size="13" fill="#9e9e9e">#43a047 Green — door, window, motion, presence, ...</text>
+<circle cx="68" cy="562" r="26" fill="#90a4ae" fill-opacity="0.25" stroke="#90a4ae" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="562" r="8" fill="#44739e"/>
+<circle cx="120" cy="562" r="14" fill="#90a4ae" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="556" font-size="16" font-weight="bold" fill="#e1e1e1">time</text>
+<text x="150" y="576" font-size="13" fill="#9e9e9e">#90a4ae Blue Grey — timestamp, duration, uptime, schedule</text>
+<circle cx="68" cy="626" r="26" fill="#00897b" fill-opacity="0.25" stroke="#00897b" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="626" r="8" fill="#44739e"/>
+<circle cx="120" cy="626" r="14" fill="#00897b" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="620" font-size="16" font-weight="bold" fill="#e1e1e1">place</text>
+<text x="150" y="640" font-size="13" fill="#9e9e9e">#00897b Teal — person, device_tracker, zone</text>
+<circle cx="68" cy="690" r="26" fill="#795548" fill-opacity="0.25" stroke="#795548" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="690" r="8" fill="#44739e"/>
+<circle cx="120" cy="690" r="14" fill="#795548" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="684" font-size="16" font-weight="bold" fill="#e1e1e1">control</text>
+<text x="150" y="704" font-size="13" fill="#9e9e9e">#795548 Brown — button, automation, helpers, ...</text>
+<circle cx="68" cy="754" r="26" fill="none" fill-opacity="0.25" stroke="none" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="754" r="8" fill="#44739e"/>
+<circle cx="120" cy="754" r="14" fill="none" stroke="#555" stroke-width="0.5"/>
+<text x="150" y="748" font-size="16" font-weight="bold" fill="#e1e1e1">neutral</text>
+<text x="150" y="768" font-size="13" fill="#9e9e9e">transparent - — anything without a rule</text>
+<text x="40" y="830" font-size="20" font-weight="bold" fill="#e1e1e1">Native HA icon colors (unchanged)</text>
+<circle cx="68" cy="868" r="26" fill="none" stroke="#444" stroke-width="2"/>
+<circle cx="68" cy="868" r="8" fill="#44739e"/>
+<circle cx="120" cy="868" r="14" fill="#44739e"/>
+<text x="150" y="862" font-size="16" font-weight="bold" fill="#e1e1e1">--state-icon-color</text>
+<text x="150" y="882" font-size="13" fill="#9e9e9e">#44739e — default icon (no state color)</text>
+<circle cx="68" cy="932" r="26" fill="none" stroke="#444" stroke-width="2"/>
+<circle cx="68" cy="932" r="8" fill="#ffc107"/>
+<circle cx="120" cy="932" r="14" fill="#ffc107"/>
+<text x="150" y="926" font-size="16" font-weight="bold" fill="#e1e1e1">--state-active-color</text>
+<text x="150" y="946" font-size="13" fill="#9e9e9e">#ffc107 — on / active (switch, light, automation, ...)</text>
+<circle cx="68" cy="996" r="26" fill="none" stroke="#444" stroke-width="2"/>
+<circle cx="68" cy="996" r="8" fill="#9e9e9e"/>
+<circle cx="120" cy="996" r="14" fill="#9e9e9e"/>
+<text x="150" y="990" font-size="16" font-weight="bold" fill="#e1e1e1">--state-inactive-color</text>
+<text x="150" y="1010" font-size="13" fill="#9e9e9e">#9e9e9e — off / inactive</text>
+<circle cx="68" cy="1060" r="26" fill="none" stroke="#444" stroke-width="2"/>
+<circle cx="68" cy="1060" r="8" fill="#ff6f22"/>
+<circle cx="120" cy="1060" r="14" fill="#ff6f22"/>
+<text x="150" y="1054" font-size="16" font-weight="bold" fill="#e1e1e1">--state-climate-heat</text>
+<text x="150" y="1074" font-size="13" fill="#9e9e9e">#ff6f22 — climate heat</text>
+<circle cx="68" cy="1124" r="26" fill="none" stroke="#444" stroke-width="2"/>
+<circle cx="68" cy="1124" r="8" fill="#3f51b5"/>
+<circle cx="120" cy="1124" r="14" fill="#3f51b5"/>
+<text x="150" y="1118" font-size="16" font-weight="bold" fill="#e1e1e1">--state-sun-below</text>
+<text x="150" y="1138" font-size="13" fill="#9e9e9e">#3f51b5 — sun below_horizon</text>
+<circle cx="68" cy="1188" r="26" fill="none" stroke="#444" stroke-width="2"/>
+<circle cx="68" cy="1188" r="8" fill="#4caf50"/>
+<circle cx="120" cy="1188" r="14" fill="#4caf50"/>
+<text x="150" y="1182" font-size="16" font-weight="bold" fill="#e1e1e1">--state-person-home</text>
+<text x="150" y="1202" font-size="13" fill="#9e9e9e">#4caf50 — person/device_tracker home</text>
+<circle cx="68" cy="1252" r="26" fill="none" stroke="#444" stroke-width="2"/>
+<circle cx="68" cy="1252" r="8" fill="#f44336"/>
+<circle cx="120" cy="1252" r="14" fill="#f44336"/>
+<text x="150" y="1246" font-size="16" font-weight="bold" fill="#e1e1e1">--error / problem</text>
+<text x="150" y="1266" font-size="13" fill="#9e9e9e">#f44336 — lock jammed, plant problem, siren, ...</text>
+</svg>
