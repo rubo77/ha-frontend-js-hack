@@ -13,8 +13,13 @@ the two thermostat sources (Matter vs Tado). The icon color itself stays
 heat, red = problem) keep their meaning. Two information channels:
 
 ```
-[○ tinted circle = category]  icon color = state
+[◍ tinted circle + colored ring = category]  icon color = state
 ```
+
+Pure alpha fills over a white background always render pastel, so each
+badge also gets a 2px inset ring at full color strength
+(`--ct-ring-opacity`, default `0.85`) — the fill stays subtle while the
+ring carries the actual color identity.
 
 Resolution order per entity: `device_class` group → `domain` → *neutral*
 (no tint). `climate`/`water_heater` resolve via the entity-registry platform
@@ -32,6 +37,7 @@ frontend:
     category-tint:
       ct-enabled: "1"
       ct-opacity: "0.18"
+      ct-ring-opacity: "0.85"
       ct-temp: "#ef6c00"
       ct-humid: "#039be5"
       ct-thermo-matter: "#6a1b9a"
