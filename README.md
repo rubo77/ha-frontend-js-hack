@@ -28,10 +28,8 @@ platform (`matter` → `thermo_matter`, everything else → `thermo_tado`).
 climate sibling → the thermo family, a sibling with power metering →
 `energy`. Entities rendered as a picture (avatars, brand icons) stay
 untinted — except round person avatars, which keep the ring.
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="palette-dark.svg">
-  <img src="palette.svg" alt="Category palette — tint circle colors in light and dark mode">
-</picture>
+<img src="palette.svg" alt="Category palette - light mode">
+<img src="palette-dark.svg" alt="Category palette - dark mode">
 
 Category list, colors and rationale: [PLAN.md](PLAN.md),
 palette: [palette.svg](palette.svg) (light) / [palette-dark.svg](palette-dark.svg).
