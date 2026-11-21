@@ -40,7 +40,7 @@ Kategorie-Auflösung pro Entity: **explizite Regel → device_class → domain
 | 7 | `opening` | `#43a047` Grün | dc `door, window, opening, garage_door, motion, presence, occupancy, moving, glass_break, vibration` | Tür/Fenster-Contacts |
 | 8 | `time` | `#90a4ae` Blau-Grau | dc `timestamp, duration, uptime, date`; domains `schedule, timer` | Uptime, Backup-Zeiten |
 | 9 | `place` | `#00897b` Teal | domains `person, device_tracker, zone`; dc `distance` | person.ruben, zone.home, Pixel-Tracker |
-| 10 | `control` | `#c2185b` Pink | domains `button, automation, scene, script, input_*, number, select, text, update, event, alarm_control_panel, cover, fan, lock, siren, vacuum, remote, todo, calendar` | Buttons, Automationen, Helfer |
+| 10 | `control` | `#795548` Braun | domains `button, automation, scene, script, input_*, number, select, text, update, event, alarm_control_panel, cover, fan, lock, siren, vacuum, remote, todo, calendar` | Buttons, Automationen, Helfer |
 | — | *neutral* | `transparent` | alles ohne Regel | klassenlose `sensor.*` |
 
 Farblogik gegen die native HA-Palette geprüft (`#f44336` error,
@@ -89,7 +89,7 @@ frontend:
       --ct-opening: "#43a047"
       --ct-time: "#90a4ae"
       --ct-place: "#00897b"
-      --ct-control: "#c2185b"
+      --ct-control: "#795548"
       --ct-neutral: "transparent"
 ```
 

@@ -47,7 +47,7 @@ frontend:
       ct-opening: "#43a047"
       ct-time: "#90a4ae"
       ct-place: "#00897b"
-      ct-control: "#c2185b"
+      ct-control: "#795548"
 ```
 
 Restart HA, select `category-tint` in your user profile → Theme. Switching

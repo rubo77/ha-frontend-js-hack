@@ -47,11 +47,11 @@
 <circle cx="120" cy="626" r="14" fill="#00897b" stroke="#ccc" stroke-width="0.5"/>
 <text x="150" y="620" font-size="16" font-weight="bold" fill="#212121">place</text>
 <text x="150" y="640" font-size="13" fill="#616161">#00897b Teal — person, device_tracker, zone</text>
-<circle cx="68" cy="690" r="26" fill="#c2185b" fill-opacity="0.18" stroke="#c2185b" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="68" cy="690" r="26" fill="#795548" fill-opacity="0.18" stroke="#795548" stroke-opacity="0.6" stroke-width="2"/>
 <circle cx="68" cy="690" r="8" fill="#44739e"/>
-<circle cx="120" cy="690" r="14" fill="#c2185b" stroke="#ccc" stroke-width="0.5"/>
+<circle cx="120" cy="690" r="14" fill="#795548" stroke="#ccc" stroke-width="0.5"/>
 <text x="150" y="684" font-size="16" font-weight="bold" fill="#212121">control</text>
-<text x="150" y="704" font-size="13" fill="#616161">#c2185b Pink — switch, light, button, automation, ...</text>
+<text x="150" y="704" font-size="13" fill="#616161">#795548 Brown — button, automation, helpers, ...</text>
 <circle cx="68" cy="754" r="26" fill="none" fill-opacity="0.18" stroke="none" stroke-opacity="0.6" stroke-width="2"/>
 <circle cx="68" cy="754" r="8" fill="#44739e"/>
 <circle cx="120" cy="754" r="14" fill="none" stroke="#ccc" stroke-width="0.5"/>
