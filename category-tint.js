@@ -3,7 +3,15 @@
 // Loaded via frontend.extra_module_url, served at /local/category-tint.js.
 // Controlled by the "category-tint" HA theme: active while --ct-enabled is
 // set on :root; colors/opacity come from the theme's --ct-* variables.
-// Resolution order per PLAN.md: device_class group -> domain -> neutral.
+// Mapping data/rules live in category-tint-map.js (same directory).
+import {
+  DC_MAP,
+  DOMAIN_MAP,
+  CLIMATE_PLATFORM_CATEGORY,
+  SWITCH_RULES,
+  NO_TINT_STATES,
+} from './category-tint-map.js';
+
 (() => {
   'use strict';
 
@@ -12,106 +20,9 @@
     'net', 'opening', 'time', 'place', 'control',
   ];
 
-  // device_class -> category (evaluated before the domain rules)
-  const DC_MAP = {
-    temperature: 'temp',
-    temperature_delta: 'temp',
-    humidity: 'humid',
-    absolute_humidity: 'humid',
-    moisture: 'humid',
-    power: 'energy',
-    apparent_power: 'energy',
-    reactive_power: 'energy',
-    energy: 'energy',
-    energy_storage: 'energy',
-    energy_distance: 'energy',
-    reactive_energy: 'energy',
-    power_factor: 'energy',
-    voltage: 'energy',
-    current: 'energy',
-    frequency: 'energy',
-    battery: 'energy',
-    battery_charging: 'energy',
-    plug: 'energy',
-    connectivity: 'net',
-    data_rate: 'net',
-    data_size: 'net',
-    signal_strength: 'net',
-    speed: 'net',
-    door: 'opening',
-    window: 'opening',
-    opening: 'opening',
-    garage_door: 'opening',
-    motion: 'opening',
-    presence: 'opening',
-    occupancy: 'opening',
-    moving: 'opening',
-    glass_break: 'opening',
-    vibration: 'opening',
-    timestamp: 'time',
-    duration: 'time',
-    uptime: 'time',
-    date: 'time',
-    distance: 'place',
-  };
-
-  // domain -> category for everything not caught by a device_class
-  const DOMAIN_MAP = {
-    person: 'place',
-    device_tracker: 'place',
-    zone: 'place',
-    schedule: 'time',
-    timer: 'time',
-    timer_list: 'time',
-    switch: 'control',
-    light: 'control',
-    button: 'control',
-    automation: 'control',
-    scene: 'control',
-    script: 'control',
-    input_boolean: 'control',
-    input_button: 'control',
-    input_datetime: 'control',
-    input_number: 'control',
-    input_select: 'control',
-    input_text: 'control',
-    number: 'control',
-    select: 'control',
-    text: 'control',
-    update: 'control',
-    event: 'control',
-    alarm_control_panel: 'control',
-    cover: 'control',
-    fan: 'control',
-    lock: 'control',
-    siren: 'control',
-    vacuum: 'control',
-    remote: 'control',
-    todo: 'control',
-    calendar: 'control',
-    media_player: 'control',
-    camera: 'control',
-    weather: 'control',
-    sun: 'control',
-    humidifier: 'control',
-    lawn_mower: 'control',
-    valve: 'control',
-    water_heater: 'control', // only reached for non-thermostat layouts
-    air_quality: 'control',
-    image: 'control',
-    notify: 'control',
-    tag: 'control',
-    counter: 'control',
-    group: 'control',
-    plant: 'control',
-  };
-  // sensor/binary_sensor intentionally absent: without a device_class they
-  // fall through to "neutral" and get no tint.
-
   // Candidates that carry a circular badge/background worth tinting
   const BADGE_TAGS = 'state-badge';
   const TILE_TAGS = 'ha-tile-icon';
-  const NO_TINT_STATES = new Set(['unavailable', 'unknown']);
   // Sections views nest badges up to ~9 shadow roots deep; keep headroom.
   const MAX_DEPTH = 14;
   const observedRoots = new WeakSet();
@@ -170,11 +81,44 @@
       // Platform distinguishes Matter-commissioned Tado X thermostats from
       // cloud-side Tado devices (PLAN.md). Any other climate platform lands
       // on thermo_tado — all non-matter climates here are Tado cloud.
-      return h?.entities?.[entityId]?.platform === 'matter'
-        ? 'thermo_matter'
-        : 'thermo_tado';
+      return (
+        CLIMATE_PLATFORM_CATEGORY[h?.entities?.[entityId]?.platform] ||
+        CLIMATE_PLATFORM_CATEGORY.default
+      );
     }
+    if (domain === 'switch') return switchCategory(h, entityId);
     return DOMAIN_MAP[domain] || 'neutral';
+  }
+
+  // device_id -> registry entries, rebuilt per scan() call.
+  let deviceIndex = null;
+  function deviceIndexOf(h) {
+    if (!deviceIndex) {
+      deviceIndex = new Map();
+      for (const ent of Object.values(h?.entities || {})) {
+        if (!ent?.device_id) continue;
+        (deviceIndex.get(ent.device_id) ||
+          deviceIndex.set(ent.device_id, []).get(ent.device_id)
+        ).push(ent);
+      }
+    }
+    return deviceIndex;
+  }
+
+  // The 'switch' domain is too generic to map by name, so SWITCH_RULES
+  // decides from registry/device context (see category-tint-map.js).
+  function switchCategory(h, entityId) {
+    const ent = h?.entities?.[entityId];
+    const siblings = ent?.device_id
+      ? deviceIndexOf(h).get(ent.device_id) || []
+      : [];
+    for (const rule of SWITCH_RULES) {
+      if (!rule.match(ent, siblings, h)) continue;
+      return typeof rule.category === 'function'
+        ? rule.category(ent, siblings, h)
+        : rule.category;
+    }
+    return 'control';
   }
 
   // One stylesheet per shadowRoot containing a rule per category, keyed by
@@ -210,6 +154,7 @@
       return;
     }
     lastTheme = theme;
+    deviceIndex = null;
 
     for (const el of collect(root, `${BADGE_TAGS},${TILE_TAGS}`)) {
       const entityId = entityIdOf(el);

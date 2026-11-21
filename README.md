@@ -62,8 +62,10 @@ entity domain to `--dic-*` theme vars. Works, but overrides the state-color
 channel — superseded by the badge-tint approach. Kept for reference; theme
 YAML example in git history / `PLAN.md` background section.
 
-## Deployed on
+## Files
 
-- nebelhaufen (`/root/.homeassistant/www/`), user `ruben`
-  — deploy copies via `~/nebelhaufen/homeassistant/www/`; ops log in
-  `~/nebelhaufen/dev/CHANGES.md`.
+- `category-tint.js` — engine: DOM/shadow traversal, theme vars, tint
+  application (never icon colors)
+- `category-tint-map.js` — all mapping data: device-class/domain tables,
+  climate platform split and the ordered `SWITCH_RULES` — edit this file
+  to change categorization, no engine changes needed
