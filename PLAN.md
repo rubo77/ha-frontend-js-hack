@@ -33,13 +33,13 @@ Kategorie-Auflösung pro Entity: **explizite Regel → device_class → domain
 |---|-----------|-------|--------|----------------|
 | 1 | `temp` | `#ef6c00` Orange | device_class `temperature` | `sensor.*_temp_hum` (Temp) |
 | 2 | `humid` | `#039be5` Hellblau | device_class `humidity`, `moisture`, `absolute_humidity` | Hum-Anteile |
-| 3 | `thermo_matter` | `#6a1b9a` Dunkel-Lila | domain `climate`/`water_heater` + Plattform `matter` | `climate.wohnzimmer_matter`, `climate.fussbodenheizung_matter` |
-| 4 | `thermo_tado` | `#ab47bc` Violett | domain `climate`/`water_heater` + Plattform `tado` | `climate.keller_keller` u. a. |
+| 3 | `thermo_matter` | `#6a1b9a` Dunkel-Lila | domain `climate`/`water_heater` + Plattform `matter` | `climate.*_matter` (Matter-commissioned) |
+| 4 | `thermo_tado` | `#ab47bc` Violett | domain `climate`/`water_heater` + Plattform `tado` | `climate.*` (Tado-Cloud-Plattform) |
 | 5 | `energy` | `#fdd835` Gelb | dc `power, energy, energy_storage, apparent_power, reactive_power(_energy), power_factor, voltage, current, frequency, battery, battery_charging, plug` + domain `light` + `switch` auf Gerät mit Strommessung | Steckdosen, Lampen, Akkus |
 | 6 | `net` | `#3949ab` Indigo | dc `connectivity, data_rate, data_size, signal_strength, speed` | speedtest, Ping, RSSI |
 | 7 | `opening` | `#43a047` Grün | dc `door, window, opening, garage_door, motion, presence, occupancy, moving, glass_break, vibration` | Tür/Fenster-Contacts |
 | 8 | `time` | `#90a4ae` Blau-Grau | dc `timestamp, duration, uptime, date`; domains `schedule, timer` | Uptime, Backup-Zeiten |
-| 9 | `place` | `#00897b` Teal | domains `person, device_tracker, zone`; dc `distance` | person.ruben, zone.home, Pixel-Tracker |
+| 9 | `place` | `#00897b` Teal | domains `person, device_tracker, zone`; dc `distance` | persons, zones, GPS-Tracker |
 | 10 | `control` | `#795548` Braun | domains `button, automation, scene, script, input_*, number, select, text, update, event, alarm_control_panel, cover, fan, lock, siren, vacuum, remote, todo, calendar` | Buttons, Automationen, Helfer |
 | — | *neutral* | `transparent` | alles ohne Regel | klassenlose `sensor.*` |
 
