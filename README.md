@@ -17,7 +17,8 @@ heat, red = problem) keep their meaning. Two information channels:
 ```
 
 <img src="docs/card-untinted.png" alt="Entities card without category tint" width="265">
-<img src="docs/card-tinted.png" alt="Same card with category tint rings" width="265">
+<img src="docs/card-tinted.png" alt="Same card with category tint rings (dark)" width="265">
+<img src="docs/card-tinted-light.png" alt="Same card with category tint rings (light)" width="265">
 
 Pure alpha fills over a white background always render pastel, so each
 badge also gets a 2px inset ring at full color strength
