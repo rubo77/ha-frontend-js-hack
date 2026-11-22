@@ -16,6 +16,9 @@ heat, red = problem) keep their meaning. Two information channels:
 [◍ tinted circle + colored ring = category]  icon color = state
 ```
 
+<img src="docs/card-untinted.png" alt="Entities card without category tint" width="265">
+<img src="docs/card-tinted.png" alt="Same card with category tint rings" width="265">
+
 Pure alpha fills over a white background always render pastel, so each
 badge also gets a 2px inset ring at full color strength
 (`--ct-ring-opacity`, default `0.85`) — the fill stays subtle while the
@@ -82,6 +85,8 @@ palette: [palette.svg](palette.svg) (light) / [palette-dark.svg](palette-dark.sv
    module only looks at the `--ct-*` variables. Switching back to the
    default theme removes all tints; changing a color only needs
    `frontend.reload_themes`, not a restart.
+
+   <img src="docs/theme-picker.png" alt="Profile page with Category Tint selected and the light/dark mode picker" width="475">
 4. Bump `?v=` whenever you change either JS file (browser cache).
 
 ### Tuning
